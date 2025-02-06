@@ -1,6 +1,8 @@
 #ifndef OBS_INSTR_NODE_IMPL_HPP
 #define OBS_INSTR_NODE_IMPL_HPP
 
+#include "observability_library/helpers/utilities.hpp"
+
 namespace obs
 {
 
@@ -27,17 +29,18 @@ InstrNode::create_subscription(const std::string & topic_name,
                                const rclcpp::SubscriptionOptionsWithAllocator<AllocatorT> & options,
                                typename MessageMemoryStrategyT::SharedPtr msg_mem_strat)
 {
+    // Set up new SubscriberStats
+    m_sub_stats[topic_name] = SubscriberStats();
+    SubscriberStats* sub_stat = &m_sub_stats[topic_name];
+    
     // Define lambda to wrap subscription callbacks
-    std::function<void(const std::shared_ptr<MessageT>)> instrumented_callback = [callback](const std::shared_ptr<MessageT> msg) -> void
+    std::function<void(const std::shared_ptr<MessageT>)> instrumented_callback = [callback, sub_stat](const std::shared_ptr<MessageT> msg) -> void
     {
-        std::cout << "Pre subscription calc" << std::endl;
+        sub_stat->callbackStart(obs::get_unix_time_ms());
         callback(msg);
-        std::cout << "Post subscription calc" << std::endl;
+        sub_stat->callbackStop(obs::get_unix_time_ms());
     };
-    
-    // Do some preamble instrumentation work here
-    std::cout << "Some instrumentation preamble work here" << std::endl;
-    
+        
     const std::shared_ptr<SubscriptionT> subscriber = rclcpp::create_subscription<MessageT>(*this,
                                                                                             extend_name_with_sub_namespace(topic_name, this->get_sub_namespace()),
                                                                                             qos,

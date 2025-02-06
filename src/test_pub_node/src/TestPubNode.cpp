@@ -19,6 +19,7 @@ TestPubNode::TestPubNode() :
     m_update_timer = this->create_timer(std::chrono::duration<std::int64_t, std::milli>(1000), 
                                         std::bind(&TestPubNode::update, this));
     
+    proc_stat_reader.init();
 }
 
 TestPubNode::~TestPubNode()
@@ -29,6 +30,8 @@ TestPubNode::~TestPubNode()
 void TestPubNode::update()
 {
     std::cout << "Running" << std::endl;
+    
+    proc_stat_reader.update();
     
     // Do some processing
     // Process

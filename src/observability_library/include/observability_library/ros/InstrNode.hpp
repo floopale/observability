@@ -1,6 +1,9 @@
 #ifndef OBS_INSTR_NODE_HPP
 #define OBS_INSTR_NODE_HPP
 
+// Component
+#include "observability_library/helpers/SubscriberStats.hpp"
+
 // ROS
 #include <rclcpp/rclcpp.hpp>
 
@@ -76,7 +79,7 @@ public:
 
 
 private:
-
+    std::map<std::string, SubscriberStats> m_sub_stats; ///< Map of suscriber stats. Topics are keys. 
 
 
     

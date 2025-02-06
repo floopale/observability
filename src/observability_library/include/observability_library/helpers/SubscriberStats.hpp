@@ -1,8 +1,11 @@
 #ifndef OBS_SUBSCRIBER_STATS_HPP
 #define OBS_SUBSCRIBER_STATS_HPP
 
-// ROS
-#include <rclcpp/rclcpp.hpp>
+// 3rd Party
+#include <boost/circular_buffer.hpp>
+
+// System
+#include <cstdint>
 
 namespace obs
 {
@@ -11,29 +14,58 @@ namespace obs
 class SubscriberStats
 {
 public:
-    /// @brief Constructor for instrumented ros node
-    explicit SubscriberStats(const rclcpp::Node* node);
-              
-    /// @brief Set up constructors/destructors
+
+/// @brief Data structure for processed stats
+struct Stats
+{
+    std::int64_t proc_avg{0};   ///< Average processing time
+    std::int64_t proc_min{0};   ///< Min processing time
+    std::int64_t proc_max{0};   ///< Max processing time
+    std::int64_t proc_var{0};   ///< Processing time variance
+    
+    std::int64_t dt_avg{0};     ///< Average time between callbacks
+    std::int64_t dt_min{0};     ///< Min time between callbacks
+    std::int64_t dt_max{0};     ///< Max time between callbacks
+    std::int64_t dt_var{0};     ///< Variance of time between callbacks
+};
+    
+public:
+    /// @brief Set up constructors/destructors. I'm being lazy here and forgetting about rule of 5. Great to fix later
     /// @{
-    ~SubscriberStats()                                 = default;
-    SubscriberStats(const SubscriberStats&)            = delete;
-    SubscriberStats(const SubscriberStats&&)           = delete;
-    SubscriberStats& operator=(const SubscriberStats&) = delete;
-    SubscriberStats& operator=(SubscriberStats&&)      = delete;
+    SubscriberStats()  = default;
+    ~SubscriberStats() = default;
     /// @}
     
+    /// @brief Function to be called at the start of the callback processing
+    /// @param[in] timestamp_ms - unix timestamp in milliseconds
+    void callbackStart(const std::int64_t timestamp_ms);
+    
+    /// @brief Function to be called at the end of the callback processing
+    /// @param[in] timestamp_ms - unix timestamp in milliseconds
+    void callbackStop(const std::int64_t timestamp_ms);
+    
+    /// @brief Function to populate stats. Should be called relatively infrequently
+    /// @return Subscriber callback stats
+    const Stats& processStats();
+    
+    /// @return Last populated stats
+    const Stats& getLastStats();
+    
 private:
-    const rclcpp::Node* const m_node;   ///< Pointer to node. Used to grab basic node utilities
+    boost::circular_buffer<std::int64_t> m_start_buff{10};  ///< Keeps running list of start times
+    boost::circular_buffer<std::int64_t> m_stop_buff{10};   ///< Keeps running list of stop times
+    boost::circular_buffer<std::int64_t> m_proc_buff{10};   ///< Keeps running list of processing times
+    boost::circular_buffer<std::int64_t> m_dt_buff{10};     ///< Keeps running list of time between callback starts
     
+    std::int64_t m_sum_proc{0};  ///< Running sum of proc buffer
+    std::int64_t m_sum_dt{0};    ///< Running sum of dt buffer
     
+    Stats m_stats;  ///< Current stats
 };
 
 } // namespace obs
 
-#endif // OBS_SUBSCRIBER_STATS_HPP
-
-// Stats to calc
+#endif // OBS_SUBSCRIBER_STATS_HPP// Stats to calc
 // max, min, average
 
 // Things to look at

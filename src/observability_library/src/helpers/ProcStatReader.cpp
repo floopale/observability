@@ -182,6 +182,28 @@ std::int32_t ProcStatReader::readProcStat(const std::int64_t timestamp_ms, const
     m_stat_data.rss_bytes     = m_value_array[23]*m_bytes_per_page;    
     m_stat_data.rsslim_bytes  = m_value_array[24]; 
     
+    //std::cout << "m_stat_data.timestamp_ms: " << m_stat_data.timestamp_ms  << std::endl; 
+    //std::cout << "m_stat_data.pid         : " << m_stat_data.pid           << std::endl; 
+    //std::cout << "m_stat_data.ppid        : " << m_stat_data.ppid          << std::endl; 
+    //std::cout << "m_stat_data.pgrp        : " << m_stat_data.pgrp          << std::endl; 
+    //std::cout << "m_stat_data.sid         : " << m_stat_data.sid           << std::endl; 
+    //std::cout << "m_stat_data.num_min_flt : " << m_stat_data.num_min_flt   << std::endl; 
+    //std::cout << "m_stat_data.num_cmin_flt: " << m_stat_data.num_cmin_flt  << std::endl; 
+    //std::cout << "m_stat_data.num_maj_flt : " << m_stat_data.num_maj_flt   << std::endl; 
+    //std::cout << "m_stat_data.num_cmaj_flt: " << m_stat_data.num_cmaj_flt  << std::endl; 
+    //std::cout << "m_stat_data.utime_ms    : " << m_stat_data.utime_ms      << std::endl; 
+    //std::cout << "m_stat_data.stime_ms    : " << m_stat_data.stime_ms      << std::endl; 
+    //std::cout << "m_stat_data.cutime_ms   : " << m_stat_data.cutime_ms     << std::endl; 
+    //std::cout << "m_stat_data.cstime_ms   : " << m_stat_data.cstime_ms     << std::endl; 
+    //std::cout << "m_stat_data.priority    : " << m_stat_data.priority      << std::endl; 
+    //std::cout << "m_stat_data.nice        : " << m_stat_data.nice          << std::endl; 
+    //std::cout << "m_stat_data.num_threads : " << m_stat_data.num_threads   << std::endl; 
+    //std::cout << "m_stat_data.start_time_m: " << m_stat_data.start_time_ms << std::endl;
+    //std::cout << "m_stat_data.uptime_ms   : " << m_stat_data.uptime_ms     << std::endl; 
+    //std::cout << "m_stat_data.vsize_bytes : " << m_stat_data.vsize_bytes   << std::endl; 
+    //std::cout << "m_stat_data.rss_bytes   : " << m_stat_data.rss_bytes     << std::endl; 
+    //std::cout << "m_stat_data.rsslim_bytes: " << m_stat_data.rsslim_bytes  << std::endl << std::endl; 
+    
     return 0;
 }
 

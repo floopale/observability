@@ -10,6 +10,8 @@
 // Component
 #include <observability_library/ros/InstrNode.hpp>
 
+#include <observability_library/helpers/ProcStatReader.hpp>
+
 // ROS
 #include <rclcpp/rclcpp.hpp>
 
@@ -39,7 +41,8 @@ private:
     DataMessage2Ptr m_data_2_pub;   ///< Data message 2 publisher
     
     rclcpp::TimerBase::SharedPtr    m_update_timer; ///< Main timer that drives update loop
-    
+  
+    obs::ProcStatReader proc_stat_reader;  
 };
 
 #endif // TEST_PUB_NODE_HPP

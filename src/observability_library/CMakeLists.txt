@@ -18,6 +18,7 @@ set(SRC_FILES
     src/helpers/ProcStatReader.cpp
     src/helpers/SubscriberStats.cpp
     src/helpers/TimerStats.cpp
+    src/helpers/utilities.cpp
 )
 
 include_directories(include)
