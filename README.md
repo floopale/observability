@@ -12,4 +12,5 @@
 - helper tools to instrument external code
 - Set up logging framework
 - Divert ROS logging into logging framework
+- Program bootups and closes are logged
 - Additional tools
