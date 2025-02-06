@@ -54,13 +54,13 @@ find_package(Eigen3 3.3.7 REQUIRED)
   
 # Find ament_cmake dependencies
 find_package(ament_cmake REQUIRED)
-#find_package(health_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
 
 ament_target_dependencies(${PROJECT_NAME}
     ${Boost_LIBRARIES}
     ${Eigen_LIBRARIES}
-#    health_msgs
+    std_msgs
     rclcpp    
 )
 

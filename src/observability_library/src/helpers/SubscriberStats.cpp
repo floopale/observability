@@ -3,7 +3,7 @@
 namespace obs
 {
 
-void SubscriberStats::callbackStart(const std::int64_t timestamp_ms)
+void SubscriberStats::callbackStart(const std::int64_t current_timestamp_ms, const std::int64_t msg_timestamp_ms)
 {
     // Check if at capacity and if capacity is enough. Do a dumb resize if not at least two seconds
     if (m_start_buff.size() == m_start_buff.capacity())
@@ -18,6 +18,7 @@ void SubscriberStats::callbackStart(const std::int64_t timestamp_ms)
             m_stop_buff.set_capacity(new_capacity);
             m_proc_buff.set_capacity(new_capacity);
             m_dt_buff.set_capacity(new_capacity);
+            m_lat_buff.set_capacity(new_capacity);
         }
     }
     
@@ -26,9 +27,11 @@ void SubscriberStats::callbackStart(const std::int64_t timestamp_ms)
     {
         m_sum_proc  -= m_proc_buff.front();
         m_sum_dt    -= m_dt_buff.front();
+        m_sum_lat   -= m_lat_buff.front();
     }
     
-    m_start_buff.push_back(timestamp_ms);
+    // Populate start buff
+    m_start_buff.push_back(current_timestamp_ms);
     
     // Populate dt buff
     if (m_start_buff.size() < 2U)
@@ -42,11 +45,15 @@ void SubscriberStats::callbackStart(const std::int64_t timestamp_ms)
     }
     
     m_sum_dt += m_dt_buff.back();
+    
+    // Populate latency buffer
+    m_lat_buff.push_back(current_timestamp_ms - msg_timestamp_ms);
+    m_sum_lat += m_lat_buff.back();
 }
     
-void SubscriberStats::callbackStop(const std::int64_t timestamp_ms)
+void SubscriberStats::callbackStop(const std::int64_t current_timestamp_ms)
 {
-    m_stop_buff.push_back(timestamp_ms);
+    m_stop_buff.push_back(current_timestamp_ms);
     m_proc_buff.push_back(m_stop_buff.back() - m_start_buff.back()); 
     
     m_sum_proc += m_proc_buff.back();
@@ -112,15 +119,46 @@ const SubscriberStats::Stats& SubscriberStats::processStats()
         sum_proc_diff_sq += diff_sq;
     }
     
+    // Process latency buffer
+    const std::int64_t avg_lat         = m_sum_lat/n;
+    std::int64_t       max_lat         = -1;
+    std::int64_t       min_lat         = -1;
+    std::int64_t       sum_lat_diff_sq = 0;
+    for (const auto& lat : m_lat_buff)
+    {
+        if (lat > max_lat)
+        {
+            max_lat = lat;
+        }
+        
+        if (min_lat == -1)
+        {
+            min_lat = lat;
+        }
+        else if (lat < min_lat)
+        {
+            min_lat = lat;
+        }
+        
+        const std::int64_t diff_sq = (lat - avg_lat)*(lat - avg_lat);
+        sum_lat_diff_sq += diff_sq;
+    }
+    
     // Update internal data structure
     m_stats.dt_avg   = avg_dt;
     m_stats.dt_min   = min_dt;
     m_stats.dt_max   = max_dt;
     m_stats.dt_var   = sum_dt_diff_sq/(n-1U);
+    
     m_stats.proc_avg = avg_proc;
     m_stats.proc_min = min_proc;
     m_stats.proc_max = max_proc;
     m_stats.proc_var = sum_proc_diff_sq/(n-1U);
+    
+    m_stats.lat_avg = avg_lat;
+    m_stats.lat_min = min_lat;
+    m_stats.lat_max = max_lat;
+    m_stats.lat_var = sum_lat_diff_sq/(n-1U);
     
     return m_stats;
 }

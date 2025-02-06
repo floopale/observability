@@ -21,4 +21,11 @@ std::int64_t get_unix_time_ms()
     return time_ms;
 }
 
+std::int64_t convert_ros_time_to_unix_ms(const rclcpp::Time& ros_time)
+{
+    const std::int64_t time_ms = static_cast<std::int64_t>(ros_time.nanoseconds())/1'000'000;
+    
+    return time_ms;
+}
+
 } // namespace obs

@@ -27,6 +27,11 @@ struct Stats
     std::int64_t dt_min{0};     ///< Min time between callbacks
     std::int64_t dt_max{0};     ///< Max time between callbacks
     std::int64_t dt_var{0};     ///< Variance of time between callbacks
+    
+    std::int64_t lat_avg{0};     ///< Average latency of data
+    std::int64_t lat_min{0};     ///< Min latency of data
+    std::int64_t lat_max{0};     ///< Max latency of data
+    std::int64_t lat_var{0};     ///< Variance of message latency
 };
     
 public:
@@ -37,12 +42,13 @@ public:
     /// @}
     
     /// @brief Function to be called at the start of the callback processing
-    /// @param[in] timestamp_ms - unix timestamp in milliseconds
-    void callbackStart(const std::int64_t timestamp_ms);
+    /// @param[in] current_timestamp_ms - current unix timestamp in milliseconds
+    /// @param[in] msg_timestamp_ms - unix timestamp of message received (0) if header is not present
+    void callbackStart(const std::int64_t current_timestamp_ms, const std::int64_t msg_timestamp_ms);
     
     /// @brief Function to be called at the end of the callback processing
-    /// @param[in] timestamp_ms - unix timestamp in milliseconds
-    void callbackStop(const std::int64_t timestamp_ms);
+    /// @param[in] current_timestamp_ms - current unix timestamp in milliseconds
+    void callbackStop(const std::int64_t current_timestamp_ms);
     
     /// @brief Function to populate stats. Should be called relatively infrequently
     /// @return Subscriber callback stats
@@ -56,9 +62,11 @@ private:
     boost::circular_buffer<std::int64_t> m_stop_buff{10};   ///< Keeps running list of stop times
     boost::circular_buffer<std::int64_t> m_proc_buff{10};   ///< Keeps running list of processing times
     boost::circular_buffer<std::int64_t> m_dt_buff{10};     ///< Keeps running list of time between callback starts
+    boost::circular_buffer<std::int64_t> m_lat_buff{10};    ///< Buffer to keep track of latencies
     
-    std::int64_t m_sum_proc{0};  ///< Running sum of proc buffer
-    std::int64_t m_sum_dt{0};    ///< Running sum of dt buffer
+    std::int64_t m_sum_proc{0}; ///< Running sum of proc buffer
+    std::int64_t m_sum_dt{0};   ///< Running sum of dt buffer
+    std::int64_t m_sum_lat{0};  ///< Running sum of latency buffer
     
     Stats m_stats;  ///< Current stats
 };

@@ -3,6 +3,9 @@
 
 #include "observability_library/helpers/utilities.hpp"
 
+// ROS
+#include <std_msgs/msg/header.hpp>
+
 namespace obs
 {
 
@@ -33,11 +36,28 @@ InstrNode::create_subscription(const std::string & topic_name,
     m_sub_stats[topic_name] = SubscriberStats();
     SubscriberStats* sub_stat = &m_sub_stats[topic_name];
     
-    // Define lambda to wrap subscription callbacks
-    std::function<void(const std::shared_ptr<MessageT>)> instrumented_callback = [callback, sub_stat](const std::shared_ptr<MessageT> msg) -> void
+    // Check for header fieldint
+    bool msg_has_header = obs::has_header_field<MessageT>::value;
+    if (msg_has_header == true)
     {
-        sub_stat->callbackStart(obs::get_unix_time_ms());
+        msg_has_header = std::is_same<decltype(MessageT::header), std_msgs::msg::Header>::value;
+    }
+    
+    // Define lambda to wrap subscription callbacks
+    std::function<void(const std::shared_ptr<MessageT>)> instrumented_callback = [callback, sub_stat, msg_has_header](const std::shared_ptr<MessageT> msg) -> void
+    {
+        if (msg_has_header == true)
+        {
+            sub_stat->callbackStart(obs::get_unix_time_ms(), obs::convert_ros_time_to_unix_ms(msg->header.stamp));
+        }
+        else
+        {
+            const std::int64_t unix_time_ms = obs::get_unix_time_ms();
+            sub_stat->callbackStart(unix_time_ms, unix_time_ms);
+        }
+        
         callback(msg);
+        
         sub_stat->callbackStop(obs::get_unix_time_ms());
     };
         
