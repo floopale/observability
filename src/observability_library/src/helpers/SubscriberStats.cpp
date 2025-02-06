@@ -163,7 +163,7 @@ const SubscriberStats::Stats& SubscriberStats::processStats()
     return m_stats;
 }
     
-const SubscriberStats::Stats& SubscriberStats::getLastStats()
+const SubscriberStats::Stats& SubscriberStats::getLastStats() const
 {
     return m_stats;
 }

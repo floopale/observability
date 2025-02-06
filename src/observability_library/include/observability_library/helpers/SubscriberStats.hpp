@@ -55,7 +55,7 @@ public:
     const Stats& processStats();
     
     /// @return Last populated stats
-    const Stats& getLastStats();
+    const Stats& getLastStats() const;
     
 private:
     boost::circular_buffer<std::int64_t> m_start_buff{10};  ///< Keeps running list of start times
@@ -73,10 +73,4 @@ private:
 
 } // namespace obs
 
-#endif // OBS_SUBSCRIBER_STATS_HPP// Stats to calc
-// max, min, average
-
-// Things to look at
-// Processing duration
-// start to start
-// 
+#endif // OBS_SUBSCRIBER_STATS_HPP
