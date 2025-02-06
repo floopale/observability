@@ -1,0 +1,7 @@
+{
+  "package_name": "test_msgs",
+  "non_idl_tuples": [
+    "/home/shoe/Desktop/workspace/observability/src/msgs/test_msgs:msg/DataMessage1.msg",
+    "/home/shoe/Desktop/workspace/observability/src/msgs/test_msgs:msg/DataMessage2.msg"
+  ]
+}

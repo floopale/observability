@@ -1,0 +1,39 @@
+[ 33%] [32mBuilding CXX object CMakeFiles/observability_library.dir/src/helpers/ProcStatReader.cpp.o[0m
+[ 66%] [32m[1mLinking CXX static library libobservability_library.a[0m
+[100%] Built target observability_library
+-- Install configuration: ""
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/environment/library_path.sh
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/environment/library_path.dsv
+-- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/lib/libobservability_library.a
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/include
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/ros
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/ros/InstrNode.hpp
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/ros/InstrNodeImpl.hpp
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/types
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/types/ProcStatData.hpp
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/types/ProcStatMData.hpp
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/helpers
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/helpers/ProcStatReader.hpp
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/helpers/SubscriberStats.hpp
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/helpers/TimerStats.hpp
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/ament_index/resource_index/package_run_dependencies/observability_library
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/ament_index/resource_index/parent_prefix_path/observability_library
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/environment/ament_prefix_path.sh
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/environment/path.sh
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/environment/path.dsv
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/local_setup.bash
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/local_setup.sh
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/local_setup.zsh
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/local_setup.dsv
+-- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/package.dsv
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/ament_index/resource_index/packages/observability_library
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/cmake/observability_libraryExport.cmake
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/cmake/observability_libraryExport-noconfig.cmake
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/cmake/ament_cmake_export_targets-extras.cmake
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/cmake/observability_libraryConfig.cmake
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/cmake/observability_libraryConfig-version.cmake
+-- Up-to-date: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/package.xml

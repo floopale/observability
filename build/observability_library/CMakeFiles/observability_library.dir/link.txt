@@ -1,0 +1,2 @@
+/usr/bin/ar qc libobservability_library.a CMakeFiles/observability_library.dir/src/ros/InstrNode.cpp.o CMakeFiles/observability_library.dir/src/helpers/ProcStatReader.cpp.o CMakeFiles/observability_library.dir/src/helpers/SubscriberStats.cpp.o CMakeFiles/observability_library.dir/src/helpers/TimerStats.cpp.o
+/usr/bin/ranlib libobservability_library.a

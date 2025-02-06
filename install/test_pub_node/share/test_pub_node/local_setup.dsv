@@ -1,0 +1,2 @@
+source;share/test_pub_node/environment/ament_prefix_path.sh
+source;share/test_pub_node/environment/path.sh

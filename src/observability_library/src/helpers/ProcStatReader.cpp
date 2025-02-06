@@ -1,12 +1,9 @@
-#include "observability_library/ProcStatReader.hpp"
+#include "observability_library/helpers/ProcStatReader.hpp"
 
 // System
 #include <fcntl.h>
-#include <unistd.h>
-
-
-
 #include <iostream>
+#include <unistd.h>
 
 namespace obs
 {
@@ -31,9 +28,6 @@ void ProcStatReader::init()
     m_jiffy_per_msec = 1000/tmp;
     m_bytes_per_page = sysconf(_SC_PAGESIZE);    
     m_initialized    = true;
-    
-    std::cout << "m_jiffy_per_msec: " << m_jiffy_per_msec << std::endl;
-    std::cout << "m_bytes_per_page: " << m_bytes_per_page << std::endl;
 }
 
 void ProcStatReader::setProcStatFilename(const char* const filename)
@@ -89,9 +83,6 @@ std::int32_t ProcStatReader::readStats()
     {
         return -2;
     }
-    
-    std::cout << "time: " << unix_time_ms << std::endl;
-    std::cout << "uptime msec: " << uptime_ms << std::endl;
     
     const std::int32_t proc_stat_ret_val = readProcStat(unix_time_ms, uptime_ms);
     if (proc_stat_ret_val < 0)
@@ -191,30 +182,6 @@ std::int32_t ProcStatReader::readProcStat(const std::int64_t timestamp_ms, const
     m_stat_data.rss_bytes     = m_value_array[23]*m_bytes_per_page;    
     m_stat_data.rsslim_bytes  = m_value_array[24]; 
     
-    
-    
-    std::cout << "m_stat_data.timestamp_ms : " << m_stat_data.timestamp_ms << std::endl;
-    std::cout << "m_stat_data.pid          : " << m_stat_data.pid          << std::endl;
-    std::cout << "m_stat_data.ppid         : " << m_stat_data.ppid         << std::endl;
-    std::cout << "m_stat_data.pgrp         : " << m_stat_data.pgrp         << std::endl;
-    std::cout << "m_stat_data.sid          : " << m_stat_data.sid          << std::endl;
-    std::cout << "m_stat_data.num_min_flt  : " << m_stat_data.num_min_flt  << std::endl;
-    std::cout << "m_stat_data.num_cmin_flt : " << m_stat_data.num_cmin_flt << std::endl;
-    std::cout << "m_stat_data.num_maj_flt  : " << m_stat_data.num_maj_flt  << std::endl;
-    std::cout << "m_stat_data.num_cmaj_flt : " << m_stat_data.num_cmaj_flt << std::endl;
-    std::cout << "m_stat_data.utime_ms     : " << m_stat_data.utime_ms     << std::endl;
-    std::cout << "m_stat_data.stime_ms     : " << m_stat_data.stime_ms     << std::endl;
-    std::cout << "m_stat_data.cutime_ms    : " << m_stat_data.cutime_ms    << std::endl;
-    std::cout << "m_stat_data.cstime_ms    : " << m_stat_data.cstime_ms    << std::endl;
-    std::cout << "m_stat_data.priority     : " << m_stat_data.priority     << std::endl;
-    std::cout << "m_stat_data.nice         : " << m_stat_data.nice         << std::endl;
-    std::cout << "m_stat_data.num_threads  : " << m_stat_data.num_threads  << std::endl;
-    std::cout << "m_stat_data.start_time_ms: " << m_stat_data.start_time_ms<< std::endl;
-    std::cout << "m_stat_data.uptime_ms    : " << m_stat_data.uptime_ms    << std::endl;
-    std::cout << "m_stat_data.vsize_bytes  : " << m_stat_data.vsize_bytes  << std::endl;
-    std::cout << "m_stat_data.rss_bytes    : " << m_stat_data.rss_bytes    << std::endl;
-    std::cout << "m_stat_data.rsslim_bytes : " << m_stat_data.rsslim_bytes << std::endl << std::endl;
-    
     return 0;
 }
 
@@ -240,13 +207,6 @@ std::int32_t ProcStatReader::readProcStatM(const std::int64_t timestamp_ms)
     m_statm_data.shared_bytes = m_value_array[2];
     m_statm_data.trs_bytes    = m_value_array[3];
     m_statm_data.drs_bytes    = m_value_array[5];
-    
-    std::cout << "m_statm_data.timestamp_ms: " << m_statm_data.timestamp_ms << std::endl;
-    std::cout << "m_statm_data.size_bytes  : " << m_statm_data.size_bytes   << std::endl;
-    std::cout << "m_statm_data.vm_rss_bytes: " << m_statm_data.vm_rss_bytes << std::endl;
-    std::cout << "m_statm_data.shared_bytes: " << m_statm_data.shared_bytes << std::endl;
-    std::cout << "m_statm_data.trs_bytes   : " << m_statm_data.trs_bytes    << std::endl;
-    std::cout << "m_statm_data.drs_bytes   : " << m_statm_data.drs_bytes    << std::endl << std::endl;
     
     return 0;
 }

@@ -7,10 +7,17 @@ project(observability_library VERSION 0.1.0 LANGUAGES CXX)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 
-# Add library
+# Add ros source files
 set(SRC_FILES
-    src/helpers/ProcStatReader.cpp
     src/ros/InstrNode.cpp
+)
+
+# Add helper source files
+set(SRC_FILES
+    ${SRC_FILES}
+    src/helpers/ProcStatReader.cpp
+    src/helpers/SubscriberStats.cpp
+    src/helpers/TimerStats.cpp
 )
 
 include_directories(include)

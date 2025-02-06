@@ -1,0 +1,67 @@
+[0.008s] Invoking command in '/home/shoe/Desktop/workspace/observability/build/observability_library': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/shoe/Desktop/workspace/observability/src/observability_library -DCMAKE_INSTALL_PREFIX=/home/shoe/Desktop/workspace/observability/install/observability_library
+[0.074s] -- The CXX compiler identification is GNU 13.3.0
+[0.092s] -- Detecting CXX compiler ABI info
+[0.208s] -- Detecting CXX compiler ABI info - done
+[0.216s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.216s] -- Detecting CXX compile features
+[0.217s] -- Detecting CXX compile features - done
+[0.222s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found suitable version "1.83.0", minimum required is "1.65")  
+[0.228s] -- Found ament_cmake: 2.5.3 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.354s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.442s] -- Found rclcpp: 28.1.6 (/opt/ros/jazzy/share/rclcpp/cmake)
+[0.478s] -- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[0.486s] -- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[0.498s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.510s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.564s] -- Found rmw_implementation_cmake: 7.3.1 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.566s] -- Found rmw_fastrtps_cpp: 8.4.1 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[0.632s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[0.650s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[0.670s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.804s] -- Configuring done (0.8s)
+[0.810s] -- Generating done (0.0s)
+[0.813s] -- Build files have been written to: /home/shoe/Desktop/workspace/observability/build/observability_library
+[0.822s] Invoked command in '/home/shoe/Desktop/workspace/observability/build/observability_library' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/shoe/Desktop/workspace/observability/src/observability_library -DCMAKE_INSTALL_PREFIX=/home/shoe/Desktop/workspace/observability/install/observability_library
+[0.822s] Invoking command in '/home/shoe/Desktop/workspace/observability/build/observability_library': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/shoe/Desktop/workspace/observability/build/observability_library -- -j20 -l20
+[0.867s] [ 33%] [32mBuilding CXX object CMakeFiles/observability_library.dir/src/helpers/ProcStatReader.cpp.o[0m
+[0.868s] [ 66%] [32mBuilding CXX object CMakeFiles/observability_library.dir/src/ros/InstrNode.cpp.o[0m
+[2.892s] [100%] [32m[1mLinking CXX static library libobservability_library.a[0m
+[2.920s] [100%] Built target observability_library
+[2.929s] Invoked command in '/home/shoe/Desktop/workspace/observability/build/observability_library' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/shoe/Desktop/workspace/observability/build/observability_library -- -j20 -l20
+[2.938s] Invoking command in '/home/shoe/Desktop/workspace/observability/build/observability_library': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/shoe/Desktop/workspace/observability/build/observability_library
+[2.944s] -- Install configuration: ""
+[2.944s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/environment/library_path.sh
+[2.945s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/environment/library_path.dsv
+[2.945s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/lib/libobservability_library.a
+[2.945s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/include
+[2.945s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library
+[2.945s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/ros
+[2.945s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/ros/InstrNode.hpp
+[2.945s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/ros/InstrNodeImpl.hpp
+[2.946s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/types
+[2.946s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/types/ProcStatData.hpp
+[2.946s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/types/ProcStatMData.hpp
+[2.946s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/helpers
+[2.946s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/helpers/ProcStatReader.hpp
+[2.946s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/include/observability_library/helpers/SubscriberStats.hpp
+[2.946s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/ament_index/resource_index/package_run_dependencies/observability_library
+[2.947s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/ament_index/resource_index/parent_prefix_path/observability_library
+[2.947s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/environment/ament_prefix_path.sh
+[2.947s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/environment/ament_prefix_path.dsv
+[2.947s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/environment/path.sh
+[2.948s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/environment/path.dsv
+[2.948s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/local_setup.bash
+[2.948s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/local_setup.sh
+[2.948s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/local_setup.zsh
+[2.948s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/local_setup.dsv
+[2.948s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/package.dsv
+[2.948s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/ament_index/resource_index/packages/observability_library
+[2.949s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/cmake/observability_libraryExport.cmake
+[2.949s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/cmake/observability_libraryExport-noconfig.cmake
+[2.949s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/cmake/ament_cmake_export_targets-extras.cmake
+[2.949s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/cmake/ament_cmake_export_include_directories-extras.cmake
+[2.949s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/cmake/ament_cmake_export_dependencies-extras.cmake
+[2.949s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/cmake/observability_libraryConfig.cmake
+[2.949s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/cmake/observability_libraryConfig-version.cmake
+[2.950s] -- Installing: /home/shoe/Desktop/workspace/observability/install/observability_library/share/observability_library/package.xml
+[2.951s] Invoked command in '/home/shoe/Desktop/workspace/observability/build/observability_library' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/shoe/Desktop/workspace/observability/build/observability_library
